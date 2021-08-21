@@ -1,0 +1,28 @@
+.profile__avatar-button {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  border: none;
+  opacity: 0;
+  background-color: rgba(0, 0, 0, 0);
+  background-image: url(../../../images/pen.png);
+  cursor: pointer;
+  transition: opacity 0.2s ease-in-out;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 120px;
+  width: 120px;
+  z-index: 1;
+}
+
+.profile__avatar-button:hover {
+  opacity: 1;
+  cursor: pointer;
+  background: none;
+  background-image: url(../../../images/pen.png);
+  background-color: rgba(0, 0, 0, 0.8);
+  background-repeat: no-repeat;
+  background-position: center;
+}
