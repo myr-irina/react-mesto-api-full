@@ -1,4 +1,4 @@
-const BASE_URL = "https://mesto.mesto.students.nomoredomains.monster";
+const BASE_URL = "https://api.mestoproject.students.nomoredomains.club";
 
 function checkResponse(res) {
   if (res.ok) {
