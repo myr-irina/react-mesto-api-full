@@ -29,6 +29,7 @@ app.use(cors({
   origin: [
     'https://mesto.mesto.students.nomoredomains.monster',
     'http://mesto.mesto.students.nomoredomains.monster',
+    'http://localhost:3000',
   ],
 }));
 app.use(helmet());
