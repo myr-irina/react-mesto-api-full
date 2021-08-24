@@ -16,6 +16,7 @@ class Api {
       headers: {
         authorization: this._token,
       },
+      credentials: "include",
     }).then(this._checkResponse);
   }
 
@@ -24,6 +25,7 @@ class Api {
       headers: {
         authorization: this._token,
       },
+      credentials: "include",
     }).then(this._checkResponse);
   }
 
@@ -34,6 +36,7 @@ class Api {
         authorization: this._token,
         "Content-Type": "application/json",
       },
+      credentials: "include",
       body: JSON.stringify({
         name,
         about,
@@ -50,6 +53,7 @@ class Api {
         authorization: this._token,
         "Content-Type": "application/json",
       },
+      credentials: "include",
       body: JSON.stringify({
         avatar: data.avatar,
       }),
@@ -63,6 +67,7 @@ class Api {
         authorization: this._token,
         "Content-Type": "application/json",
       },
+      credentials: "include",
       body: JSON.stringify({
         name,
         link,
@@ -76,6 +81,7 @@ class Api {
       headers: {
         authorization: this._token,
       },
+      credentials: "include",
     }).then(this._checkResponse);
   }
 
@@ -86,6 +92,7 @@ class Api {
         authorization: this._token,
         "Content-Type": "application/json",
       },
+      credentials: "include",
     }).then(this._checkResponse);
   }
 
@@ -95,6 +102,7 @@ class Api {
       headers: {
         authorization: this._token,
       },
+      credentials: "include",
     }).then(this._checkResponse);
   }
 
