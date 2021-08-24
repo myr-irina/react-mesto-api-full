@@ -25,7 +25,11 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
   useFindAndModify: false,
 });
 
-app.use(cors());
+app.use(cors({
+  origin: [
+    'https://mesto.mesto.students.nomoredomains.monster',
+  ],
+}));
 app.use(helmet());
 app.use(express.json());
 app.use(
