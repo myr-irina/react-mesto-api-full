@@ -2,6 +2,8 @@ const DEFAULT_ALLOWED_METHODS = 'GET,HEAD,PUT,PATCH,POST,DELETE';
 const allowedCors = [
   'https://mesto.mesto.students.nomoredomains.monster',
   'https://api.mestoproject.students.nomoredomains.club',
+  'http://mesto.mesto.students.nomoredomains.monster',
+  'http://api.mestoproject.students.nomoredomains.club',
   'http://localhost:3000',
 ];
 
