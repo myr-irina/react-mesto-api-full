@@ -3,7 +3,7 @@ const helmet = require('helmet');
 const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
 const { errors } = require('celebrate');
-const cors = require('cors');
+// const cors = require('cors');
 const usersRouter = require('./routes/users');
 const cardsRouter = require('./routes/cards');
 const auth = require('./middlewares/auth');
@@ -16,7 +16,7 @@ const { PORT = 3000 } = process.env;
 const app = express();
 const { validateSignUp, validateSignIn } = require('./middlewares/validators');
 const NotFoundError = require('./errors/NotFoundError');
-// const cors = require('./middlewares/cors');
+const cors = require('./middlewares/cors');
 
 mongoose.connect('mongodb://localhost:27017/mestodb', {
   useUnifiedTopology: true,
