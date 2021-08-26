@@ -28,18 +28,13 @@ export const login = (email, password) => {
     headers: {
       "Content-Type": "application/json",
     },
+    credentials: "include",
     body: JSON.stringify({
       email: email,
       password: password,
     }),
   })
     .then(checkResponse)
-    .then((data) => {
-      if (data.token) {
-        localStorage.setItem("jwt", data.token);
-        return data;
-      }
-    })  
 };
 
 export const checkToken = (jwt) => {
@@ -47,8 +42,8 @@ export const checkToken = (jwt) => {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${jwt}`,
     },
+    credentials: 'include',
   })
     .then(checkResponse)
 };

@@ -1,7 +1,7 @@
 class Api {
-  constructor({ address, token }) {
-    this._address = address;
-    this._token = token;
+  constructor(options) {
+    this._address = options.address;
+    this._headers = options.headers;
   }
 
   _checkResponse(res) {
@@ -14,7 +14,7 @@ class Api {
   getInitialCards() {
     return fetch(`${this._address}/cards`, {
       headers: {
-        authorization: this._token,
+        "Content-Type": "application/json",
       },
       credentials: "include",
     }).then(this._checkResponse);
@@ -22,9 +22,7 @@ class Api {
 
   getUserData() {
     return fetch(`${this._address}/users/me`, {
-      headers: {
-        authorization: this._token,
-      },
+      headers: this._headers,
       credentials: "include",
     }).then(this._checkResponse);
   }
@@ -32,10 +30,7 @@ class Api {
   setUserData({ name, about, avatar }) {
     return fetch(`${this._address}/users/me`, {
       method: "PATCH",
-      headers: {
-        authorization: this._token,
-        "Content-Type": "application/json",
-      },
+      headers: this._headers,
       credentials: "include",
       body: JSON.stringify({
         name,
@@ -45,14 +40,10 @@ class Api {
     }).then(this._checkResponse);
   }
 
-  
   updateAvatar(data) {
     return fetch(`${this._address}/users/me/avatar`, {
       method: "PATCH",
-      headers: {
-        authorization: this._token,
-        "Content-Type": "application/json",
-      },
+      headers: this._headers,
       credentials: "include",
       body: JSON.stringify({
         avatar: data.avatar,
@@ -63,10 +54,7 @@ class Api {
   createCard({ name, link }) {
     return fetch(`${this._address}/cards`, {
       method: "POST",
-      headers: {
-        authorization: this._token,
-        "Content-Type": "application/json",
-      },
+      headers: this._headers,
       credentials: "include",
       body: JSON.stringify({
         name,
@@ -78,9 +66,7 @@ class Api {
   deleteCard(id) {
     return fetch(`${this._address}/cards/${id}`, {
       method: "DELETE",
-      headers: {
-        authorization: this._token,
-      },
+      headers: this._headers,
       credentials: "include",
     }).then(this._checkResponse);
   }
@@ -88,10 +74,7 @@ class Api {
   addLike(id) {
     return fetch(`${this._address}/cards/likes/${id}`, {
       method: "PUT",
-      headers: {
-        authorization: this._token,
-        "Content-Type": "application/json",
-      },
+      headers: this._headers,
       credentials: "include",
     }).then(this._checkResponse);
   }
@@ -99,25 +82,25 @@ class Api {
   deleteLike(id) {
     return fetch(`${this._address}/cards/likes/${id}`, {
       method: "DELETE",
-      headers: {
-        authorization: this._token,
-      },
+      headers: this._headers,
       credentials: "include",
     }).then(this._checkResponse);
   }
 
   changeLikeCardStatus(id, isLiked) {
-    if(!isLiked) {
-      return this.deleteLike(id)
+    if (!isLiked) {
+      return this.deleteLike(id);
     } else {
-      return this.addLike(id)
+      return this.addLike(id);
     }
   }
 }
 
- const api = new Api({
+const api = new Api({
   address: "https://api.mestoproject.students.nomoredomains.club",
-//   token: "4efae440-5715-4ca9-8417-962742ac588e",
+  headers: {
+    "Content-Type": "application/json",
+  },
 });
 
-export default api
+export default api;
