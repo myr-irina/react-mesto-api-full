@@ -79,11 +79,10 @@ function App() {
 
   //Хук для проверки токена при каждом монтировании компонента App
   React.useEffect(() => {
-    const jwt = localStorage.getItem("jwt");
-    //проверим существует ли токен в хранилище браузера localStorage
-    if (jwt) {
-      auth
-        .checkToken(jwt)
+    // const jwt = localStorage.getItem("jwt");
+    // //проверим существует ли токен в хранилище браузера localStorage
+    // if (jwt) {
+      auth.checkToken()
         .then((res) => {
           setIsLoggedIn(true);
           setEmail(res.data.email);
@@ -95,8 +94,7 @@ function App() {
           }
           console.log("401 — Переданный токен некорректен");
         });
-    }
-  }, [history]);
+    }, [history]);
 
   function handleEditAvatarClick() {
     setIsEditAvatarPopupOpen(true);
