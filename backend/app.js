@@ -1,3 +1,4 @@
+// eslint-disable-next-line linebreak-style
 const express = require('express');
 const helmet = require('helmet');
 const mongoose = require('mongoose');
