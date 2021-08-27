@@ -78,7 +78,7 @@ function App() {
   }, []);
 
   //Хук для проверки токена при каждом монтировании компонента App
-  React.useEffect(() => {
+  const handleTokenCheck = React.useCallback(() => {
     // const jwt = localStorage.getItem("jwt");
     // //проверим существует ли токен в хранилище браузера localStorage
     // if (jwt) {
@@ -95,6 +95,10 @@ function App() {
           console.log("401 — Переданный токен некорректен");
         });
     }, [history]);
+
+    React.useEffect(() => {
+      handleTokenCheck();
+  }, [handleTokenCheck])
 
   function handleEditAvatarClick() {
     setIsEditAvatarPopupOpen(true);
@@ -201,7 +205,7 @@ function App() {
     auth
       .login(email, password)
       .then((res) => {
-        localStorage.setItem("jwt", res.token);
+        handleTokenCheck();
         setIsLoggedIn(true);
         setEmail(email);
         history.push("/");
@@ -216,7 +220,7 @@ function App() {
   }
 
   function handleSignOut() {
-    localStorage.removeItem("jwt");
+    auth.signOut();
     setIsLoggedIn(false);
     history.push("/sign-in");
   }

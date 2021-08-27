@@ -37,7 +37,7 @@ export const login = (email, password) => {
     .then(checkResponse)
 };
 
-export const checkToken = (jwt) => {
+export const checkToken = () => {
   return fetch(`${BASE_URL}/users/me`, {
     method: "GET",
     headers: {
@@ -46,4 +46,11 @@ export const checkToken = (jwt) => {
     credentials: 'include',
   })
     .then(checkResponse)
+};
+
+export const signOut = () => {
+  return fetch(`${BASE_URL}/signout`, {
+      method: "DELETE",
+      credentials: "include",
+  }).then((res) => checkResponse(res));
 };
