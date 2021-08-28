@@ -227,9 +227,15 @@ function App() {
   }
 
   function handleSignOut() {
-    auth.signOut();
-    setIsLoggedIn(false);
-    history.push("/sign-in");
+    auth.signOut()
+    .then(() => {
+      setIsLoggedIn(false);
+      setEmail('');
+      history.push("/sign-in");
+    })
+    .catch((err) => {
+      console.log(`Ошибка при выходе из приложения. ${err}`);
+    })    
   }
 
   return (
