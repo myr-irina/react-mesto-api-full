@@ -150,7 +150,7 @@ const login = (req, res, next) => {
       res
         .cookie('jwt', token, {
           httpOnly: true,
-          // sameSite: true,
+          sameSite: true,
         })
         .send({ token });
     })

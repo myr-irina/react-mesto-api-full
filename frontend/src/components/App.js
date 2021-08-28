@@ -206,9 +206,9 @@ function App() {
       .login(email, password)
       .then((res) => {
         handleTokenCheck();
-        // setIsLoggedIn(true);
-        // setEmail(email);
-        // history.push("/");
+        setIsLoggedIn(true);
+        setEmail(email);
+        history.push("/");
       })
       .catch((err) => {
         if (err.status === 400) {
