@@ -49,7 +49,7 @@ function App() {
       })
       .catch((err) => console.log(err))
       // .finally(() => setIsLoading(false));
-  }, []);
+  }, [isLoggedIn]);
 
   React.useEffect(() => {
     function handleEscClose(evt) {
