@@ -37,10 +37,10 @@ function App() {
   const [isInfoToolTipPopupOpen, setInfoToolTipPopupOpen] =
     React.useState(false);
   const [isSuccess, setIsSuccess] = React.useState(false);
-  const [isLoading, setIsLoading] = React.useState(false);
+  // const [isLoading, setIsLoading] = React.useState(false);
 
   React.useEffect(() => {
-    setIsLoading(true);
+    // setIsLoading(true);
 
     Promise.all([api.getUserData(), api.getInitialCards()])
       .then(([userInfo, cardInfo]) => {
@@ -48,7 +48,7 @@ function App() {
         setCards(cardInfo);
       })
       .catch((err) => console.log(err))
-      .finally(() => setIsLoading(false));
+      // .finally(() => setIsLoading(false));
   }, []);
 
   React.useEffect(() => {
@@ -62,7 +62,7 @@ function App() {
     return () => {
       document.removeEventListener("keydown", handleEscClose);
     };
-  }, []);
+  }, [isLoggedIn]);
 
   React.useEffect(() => {
     function handleOverlayClose(evt) {
@@ -187,7 +187,7 @@ function App() {
   function handleRegisterSubmit(email, password) {
     auth
       .register(email, password)
-      .then((res) => {
+      .then(() => {
         setInfoToolTipPopupOpen(true);
         setIsSuccess(true);
         history.push("/sign-in");
@@ -196,8 +196,8 @@ function App() {
         if (err.status === 400) {
           console.log("400 - некорректно заполнено одно из полей");
         }
-        setInfoToolTipPopupOpen(true);
         setIsSuccess(false);
+        setInfoToolTipPopupOpen(true);        
       });
   }
 
@@ -206,9 +206,9 @@ function App() {
       .login(email, password)
       .then((res) => {
         handleTokenCheck();
-        setIsLoggedIn(true);
-        setEmail(email);
-        history.push("/");
+        // setIsLoggedIn(true);
+        // setEmail(email);
+        // history.push("/");
       })
       .catch((err) => {
         if (err.status === 400) {
@@ -216,6 +216,8 @@ function App() {
         } else if (err.status === 401) {
           console.log("401 - пользователь с email не найден");
         }
+        setIsSuccess(false);
+        setInfoToolTipPopupOpen(true);        
       });
   }
 
@@ -233,18 +235,17 @@ function App() {
 
           <Switch>
             <ProtectedRoute
-              exact
-              path="/"
+              exact path="/"
               isLoggedIn={isLoggedIn}
+              component={Main}
+              cards={cards}
               onEditAvatar={handleEditAvatarClick}
               onEditProfile={handleEditProfileClick}
               onAddPlace={handleAddPlaceClick}
               onCardClick={handleCardClick}
               onCardLike={handleCardLike}
-              onCardDelete={handleCardDelete}
-              cards={cards}
-              component={Main}
-              isLoading={isLoading}
+              onCardDelete={handleCardDelete}                        
+              // isLoading={isLoading}
             />
             <Route path="/sign-in">
               <Login onLogin={handleLoginSubmit} />
