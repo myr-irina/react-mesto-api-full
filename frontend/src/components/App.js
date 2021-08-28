@@ -91,8 +91,7 @@ function App() {
         .catch((err) => {
           if (err.status === 401) {
             console.log("401 — Токен не передан или передан не в том формате");
-          }
-          console.log("401 — Переданный токен некорректен");
+          }       
         });
     }, [history]);
 
