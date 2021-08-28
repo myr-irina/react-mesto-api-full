@@ -77,11 +77,8 @@ function App() {
     };
   }, []);
 
-  //Хук для проверки токена при каждом монтировании компонента App
+ 
   const handleTokenCheck = React.useCallback(() => {
-    // const jwt = localStorage.getItem("jwt");
-    // //проверим существует ли токен в хранилище браузера localStorage
-    // if (jwt) {
       auth.checkToken()
         .then((res) => {
           setIsLoggedIn(true);
@@ -95,11 +92,11 @@ function App() {
         });
     }, [history]);
 
-    React.useEffect(() => {
-      if (isLoggedIn) {
-        history.push('/')
-      }
-    }, [isLoggedIn, history])
+    // React.useEffect(() => {
+    //   if (isLoggedIn) {
+    //     history.push('/')
+    //   }
+    // }, [isLoggedIn, history])
 
     React.useEffect(() => {
       handleTokenCheck();
