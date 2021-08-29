@@ -39,9 +39,9 @@ function App() {
   const [isSuccess, setIsSuccess] = React.useState(false);
   // const [isLoading, setIsLoading] = React.useState(false);
 
-  React.useEffect(() => {
-    // setIsLoading(true);
-
+  React.useEffect(() => {  
+    if(isLoggedIn) {
+      // setIsLoading(true);
     Promise.all([api.getUserData(), api.getInitialCards()])
       .then(([userInfo, cardInfo]) => {
         setCurrentUser(userInfo);
@@ -49,6 +49,7 @@ function App() {
       })
       .catch((err) => console.log(err))
       // .finally(() => setIsLoading(false));
+    }
   }, [isLoggedIn]);
 
   React.useEffect(() => {
@@ -92,11 +93,11 @@ function App() {
         });
     }, [history]);
 
-    React.useEffect(() => {
-      if (isLoggedIn) {
-        history.push('/')
-      }
-    }, [isLoggedIn, history])
+    // React.useEffect(() => {
+    //   if (isLoggedIn) {
+    //     history.push('/')
+    //   }
+    // }, [isLoggedIn, history])
 
     React.useEffect(() => {
       handleTokenCheck();
