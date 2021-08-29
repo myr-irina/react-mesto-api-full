@@ -8,7 +8,7 @@ const cors = require('cors');
 const usersRouter = require('./routes/users');
 const cardsRouter = require('./routes/cards');
 const auth = require('./middlewares/auth');
-const { createUser, login } = require('./controllers/users');
+const { createUser, login, signOut } = require('./controllers/users');
 const errorHandler = require('./middlewares/errorHandler');
 require('dotenv').config();
 const { requestLogger, errorLogger } = require('./middlewares/logger');
@@ -49,6 +49,7 @@ app.use(requestLogger);
 
 app.post('/signup', validateSignUp, createUser);
 app.post('/signin', validateSignIn, login);
+app.delete('/signout', signOut);
 
 app.use(auth);
 

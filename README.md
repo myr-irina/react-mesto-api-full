@@ -3,6 +3,6 @@
   
 Пожалуйста, прикрепите в это описание ссылку на сайт, размещенный на Яндекс.Облаке.
 
-Frontend Hosting: https://mesto.mesto.students.nomoredomains.monster
-Server URL: https://api.mestoproject.students.nomoredomains.club
-Public IP Address: 178.154.246.218
+* Frontend Hosting: https://mesto.mesto.students.nomoredomains.monster
+* Server URL: https://api.mestoproject.students.nomoredomains.club
+* Public IP Address: 178.154.246.218
