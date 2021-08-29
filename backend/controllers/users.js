@@ -163,7 +163,14 @@ const login = (req, res, next) => {
 
 const signOut = (req, res) => {
   res.clearCookie('jwt');
-  res.status(200).send({ message: 'Куки почищены.' });
+  res
+    .cookie('jwt', '', {
+      httpOnly: true,
+      sameSite: 'none',
+      secure: true,
+      expires: Date.now(),
+    })
+    .status(200).send({ message: 'Куки почищены.' });
 };
 
 module.exports = {
