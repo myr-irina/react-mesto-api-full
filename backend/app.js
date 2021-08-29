@@ -17,7 +17,6 @@ const { PORT = 3000 } = process.env;
 const app = express();
 const { validateSignUp, validateSignIn } = require('./middlewares/validators');
 const NotFoundError = require('./errors/NotFoundError');
-// const cors = require('./middlewares/cors');
 
 mongoose.connect('mongodb://localhost:27017/mestodb', {
   useUnifiedTopology: true,
@@ -46,6 +45,12 @@ app.use(
 app.use(cookieParser());
 
 app.use(requestLogger);
+
+app.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+});
 
 app.post('/signup', validateSignUp, createUser);
 app.post('/signin', validateSignIn, login);

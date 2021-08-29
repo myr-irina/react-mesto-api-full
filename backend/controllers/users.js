@@ -168,13 +168,6 @@ const signOut = (req, res) => {
     secure: true,
   })
     .status(200).send({ message: 'Куки почищены.' });
-  // res
-  //   .cookie('jwt', '', {
-  //     httpOnly: true,
-  //     sameSite: 'none',
-  //     secure: true,
-  //     maxAge: 1,
-  //   })
 };
 
 module.exports = {

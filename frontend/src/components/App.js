@@ -242,8 +242,8 @@ function App() {
         <div className="page__container">
           <Header email={email} onSignOut={handleSignOut} />
 
-          <Switch>{
-            isLoggedIn && (<ProtectedRoute
+          <Switch>
+            <ProtectedRoute
               exact path="/"
               isLoggedIn={isLoggedIn}
               component={Main}
@@ -255,8 +255,7 @@ function App() {
               onCardLike={handleCardLike}
               onCardDelete={handleCardDelete}                        
               // isLoading={isLoading}
-            />)
-          }
+            />
             <Route path="/sign-in">
               <Login onLogin={handleLoginSubmit} />
             </Route>
