@@ -161,10 +161,7 @@ const login = (req, res, next) => {
     .catch(next);
 };
 
-const signOut = (req, res, next) => {
-  res.clearCookie('jwt').send({ message: 'Куки почищены.' });
-  next();
-};
+const signOut = (req, res) => res.clearCookie('jwt').send({ message: 'Куки почищены.' });
 
 module.exports = {
   getUsers,
