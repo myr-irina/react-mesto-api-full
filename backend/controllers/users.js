@@ -163,7 +163,6 @@ const login = (req, res, next) => {
 
 const signOut = (req, res) => {
   res.clearCookie('jwt');
-  res.session.destroy();
   res.status(200).send({ message: 'Куки почищены.' });
 };
 
