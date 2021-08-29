@@ -38,6 +38,8 @@ app.use(
       'http://mesto.mesto.students.nomoredomains.monster',
       'http://localhost:3000',
     ],
+    methods: ['GET', 'PUT', 'POST', 'DELETE'],
+    allowedHeaders: ['Authorization', 'Content-Type'],
     credentials: true,
   }),
 );
