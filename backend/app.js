@@ -33,7 +33,10 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
 
 app.use(
   cors({
-    origin: true,
+    origin: [
+      'https://mesto.mesto.students.nomoredomains.monster',
+      'http://mesto.mesto.students.nomoredomains.monster',
+    ],
     methods: ['GET', 'PUT', 'POST', 'DELETE'],
     allowedHeaders: ['Authorization', 'Content-Type'],
     credentials: true,
