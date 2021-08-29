@@ -162,15 +162,19 @@ const login = (req, res, next) => {
 };
 
 const signOut = (req, res) => {
-  res.clearCookie('jwt');
-  res
-    .cookie('jwt', '', {
-      httpOnly: true,
-      sameSite: 'none',
-      secure: true,
-      maxAge: 1,
-    })
+  res.clearCookie('jwt', {
+    httpOnly: true,
+    sameSite: 'none',
+    secure: true,
+  })
     .status(200).send({ message: 'Куки почищены.' });
+  // res
+  //   .cookie('jwt', '', {
+  //     httpOnly: true,
+  //     sameSite: 'none',
+  //     secure: true,
+  //     maxAge: 1,
+  //   })
 };
 
 module.exports = {
