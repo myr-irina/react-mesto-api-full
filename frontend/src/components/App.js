@@ -93,11 +93,11 @@ function App() {
         });
     }, [history]);
 
-    // React.useEffect(() => {
-    //   if (isLoggedIn) {
-    //     history.push('/')
-    //   }
-    // }, [isLoggedIn, history])
+    React.useEffect(() => {
+      if (isLoggedIn) {
+        history.push('/')
+      }
+    }, [isLoggedIn, history])
 
     React.useEffect(() => {
       handleTokenCheck();
