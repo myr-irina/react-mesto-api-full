@@ -168,7 +168,7 @@ const signOut = (req, res) => {
       httpOnly: true,
       sameSite: 'none',
       secure: true,
-      expires: Date.now(),
+      maxAge: 1,
     })
     .status(200).send({ message: 'Куки почищены.' });
 };
